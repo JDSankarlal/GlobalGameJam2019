@@ -1,0 +1,14 @@
+{
+  "ProjectFilePath": "c:\\Users\\100658457\\Documents\\Repos\\GlobalGameJam2019\\GlobalGameJam2019\\Assembly-CSharp.csproj",
+  "TargetFramework": "v3.5",
+  "TagHelpers": [],
+  "Configuration": {
+    "ConfigurationName": "UnsupportedRazor",
+    "LanguageVersion": "1.0",
+    "Extensions": [
+      {
+        "ExtensionName": "UnsupportedRazorExtension"
+      }
+    ]
+  }
+}
