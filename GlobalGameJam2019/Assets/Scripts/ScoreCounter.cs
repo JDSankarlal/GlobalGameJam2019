@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreCounter : MonoBehaviour {
 
-    public static float playerScore = 0;
+    public static int playerScore = 0;
 	// Use this for initialization
     UnityEngine.UI.Text score;
 	void Start ()

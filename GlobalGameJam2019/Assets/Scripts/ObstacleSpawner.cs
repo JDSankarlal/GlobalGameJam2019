@@ -7,7 +7,7 @@ public class ObstacleSpawner : MonoBehaviour {
     public GameObject obstacle;
     public float spawnTime = 3f;
     public Transform[] spawnPoints;
-    float difficultyIncreaseTime=5;
+    float difficultyIncreaseTime=60;
     float bigTimer;
     float currentSpawnTime;
 	// Use this for initialization
@@ -27,7 +27,7 @@ public class ObstacleSpawner : MonoBehaviour {
         if (bigTimer>=difficultyIncreaseTime)
         {
             spawnTime -= .5f;
-            difficultyIncreaseTime -= 50;
+            difficultyIncreaseTime -= 5;
             bigTimer = 0;
         }
     }

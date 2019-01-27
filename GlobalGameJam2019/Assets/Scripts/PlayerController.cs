@@ -20,9 +20,9 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
+    public CameraShake cameraShake;
     void Update()
     {
-
          //Debug.Log("Lerping is currently: " + lerping);
         if (Input.GetKey(KeyCode.W))
         {
@@ -31,11 +31,14 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
+           
            transform.position += (new Vector3(0, -moveSpeed, 0) * Time.deltaTime);
         }
 
         if (Input.GetKeyUp(KeyCode.A))
         {
+            StartCoroutine(cameraShake.Shake(.15f, .4f));
+
             currentLane--;
             if (currentLane >= 0)
             {
@@ -53,6 +56,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.D))
         {
+            StartCoroutine(cameraShake.Shake(.15f, .4f));
+
             currentLane++;
             if (currentLane <= 3)
             {
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 currentLane--;
+
             }
             //if (currentLane == 1 || currentLane == 2)
             //{
