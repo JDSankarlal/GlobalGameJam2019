@@ -2,38 +2,96 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
     // Use this for initialization
     public float moveSpeed;
+    int currentLane;
+    bool lerping = false;
     //private CharacterController _controller;
 
 
-    void Start () {
-       // _controller = GetComponent<CharacterController>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-    
+    void Start()
+    {
+        currentLane = 1;
+
+        // _controller = GetComponent<CharacterController>();
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+
         if (Input.GetKey(KeyCode.W))
         {
-            transform.position = transform.position + (new Vector3(0, moveSpeed,0) * Time.deltaTime);
+            transform.position = transform.position + (new Vector3(0, moveSpeed, 0) * Time.deltaTime);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.position = transform.position + (new Vector3(0,  - moveSpeed, 0) * Time.deltaTime);
+            transform.position = transform.position + (new Vector3(0, -moveSpeed, 0) * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyUp(KeyCode.A))
         {
-            transform.position = transform.position + (new Vector3(-moveSpeed, 0, 0) * Time.deltaTime);
+            if (currentLane == 1 || currentLane == 3)
+            {
+                lerping = true;
+            }
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.D))
         {
-            transform.position = transform.position + (new Vector3(moveSpeed, 0, 0) * Time.deltaTime);
-        }
+            if (currentLane == 1 || currentLane == 2)
+            {
+                lerping = true;
+            }
+        }       
 
+        if (lerping == true)
+        {
+
+            if (currentLane == 1)
+            {
+                transform.position = Vector2.Lerp(transform.position, new Vector2(-1.80f, transform.position.y), moveSpeed * Time.deltaTime); //Move to Lane 2 
+            }
+
+           //if (currentLane == 1)
+           //{
+           //    transform.position = Vector2.Lerp(transform.position, new Vector2(1.90f, transform.position.y), moveSpeed * Time.deltaTime); //Move to Lane 2 
+           //}
+           //
+            if (currentLane == 2)
+            {
+               transform.position = Vector2.Lerp(transform.position, new Vector2(-0.011f, transform.position.y), moveSpeed * Time.deltaTime);
+            }
+
+            if (currentLane == 3)
+            {
+                transform.position = Vector2.Lerp(transform.position, new Vector2(1.90f, transform.position.y), moveSpeed * Time.deltaTime);
+            }
+
+            if (Mathf.Approximately(transform.position.x, -1.80f)) //If in Lane 2
+            {
+                lerping = false;
+                currentLane = 2;
+            }
+
+            if (Mathf.Approximately(transform.position.x, -0.011f)) //If in Lane 1
+            {
+                lerping = false;
+                currentLane = 1;
+            }
+
+            if (Mathf.Approximately(transform.position.x, 1.90f))
+            {
+                lerping = false;
+                currentLane = 3;
+            }
+
+            
+        }
     }
 }
+
