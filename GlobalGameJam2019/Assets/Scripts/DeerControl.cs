@@ -19,6 +19,11 @@ public class DeerControl : MonoBehaviour
     {
         transform.position += (new Vector3(0, -moveSpeed, 0) * Time.deltaTime);
 
+       if (transform.position.y <-5.5)
+        {
+            Destroy(gameObject);
+        }
     }
+
 
 }

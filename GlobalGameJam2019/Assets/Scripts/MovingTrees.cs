@@ -11,6 +11,12 @@ public class MovingTrees : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+        gameObject.transform.position += new Vector3(0, -0.05f, 0);
+
+        if (transform.position.y <= -11.0f)
+        {
+            transform.position = new Vector3(transform.position.x, 11, 0);
+        }
+    }
 }
