@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("Lerping is currently: " + lerping);
         if (Input.GetKey(KeyCode.W))
         {
             transform.position = transform.position + (new Vector3(0, moveSpeed, 0) * Time.deltaTime);
@@ -71,27 +71,19 @@ public class PlayerController : MonoBehaviour
             {
                 transform.position = Vector2.Lerp(transform.position, new Vector2(1.90f, transform.position.y), moveSpeed * Time.deltaTime);
             }
-
-            if (Mathf.Approximately(transform.position.x, -1.80f)) //If in Lane 2
-            {
-                lerping = false;
-                currentLane = 2;
-            }
-
-            if (Mathf.Approximately(transform.position.x, -0.011f)) //If in Lane 1
-            {
-                lerping = false;
-                currentLane = 1;
-            }
-
-            if (Mathf.Approximately(transform.position.x, 1.90f))
-            {
-                lerping = false;
-                currentLane = 3;
-            }
-
-            
+           
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 }
 
