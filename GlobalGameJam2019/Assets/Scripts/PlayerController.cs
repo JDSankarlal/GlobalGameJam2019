@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        //Debug.Log("Lerping is currently: " + lerping);
+         //Debug.Log("Lerping is currently: " + lerping);
         if (Input.GetKey(KeyCode.W))
         {
              transform.position += (new Vector3(0, moveSpeed, 0) * Time.deltaTime);
@@ -68,11 +68,11 @@ public class PlayerController : MonoBehaviour
             //}
         }
 
-        movementCounter += Time.deltaTime * moveSpeed;
-        if (movementCounter > 1)
-        {
-            movementCounter = 1;
-        }
+             movementCounter += Time.deltaTime * moveSpeed;
+             if (movementCounter > 1)
+             {
+                 movementCounter = 1;
+             }
             if (currentLane == 1)
             {
 
@@ -91,36 +91,33 @@ public class PlayerController : MonoBehaviour
                 transform.position = Vector2.Lerp(transform.position, new Vector2(1.90f, transform.position.y), movementCounter );
             }
 
-            //if (transform.position.x == -1.80f) //If in Lane 2
-            //{
-            //    lerping = false;
-            //    currentLane = 2;
-            //}
-            //
-            //if (transform.position.x == -0.011f) //If in Lane 1
-            //{
-            //    lerping = false;
-            //    currentLane = 1;
-            //}
-            //
-            //if (transform.position.x == 1.90f)
-            //{
-            //    lerping = false;
-            //    currentLane = 3;
-            //}
+        //if (transform.position.x == -1.80f) //If in Lane 2
+        //{
+        //    lerping = false;
+        //    currentLane = 2;
+        //}
+        //
+        //if (transform.position.x == -0.011f) //If in Lane 1
+        //{
+        //    lerping = false;
+        //    currentLane = 1;
+        //}
+        //
+        //if (transform.position.x == 1.90f)
+        //{
+        //    lerping = false;
+        //    currentLane = 3;
+        //}
 
-        
+      
     }
 
-
-
-
-
-
-
-
-
-
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision Detected");
+        Destroy(gameObject,.5f);
+    }
 }
+
+
 
